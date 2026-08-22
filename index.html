@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Golds Gim</title>
+    <title>FitPro Elite - Sistema de Gestión de Gimnasio</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- DataTables CSS -->
@@ -465,6 +465,12 @@
             }
         }
 
+        /* Estilos para el Manual */
+        .manual-content {
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
         .section-icon {
             width: 40px;
             height: 40px;
@@ -475,6 +481,18 @@
             align-items: center;
             justify-content: center;
             margin-right: 15px;
+        }
+
+        .manual-section h4 {
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .manual-section {
+            scroll-margin-top: 2rem;
         }
     </style>
 </head>
@@ -501,8 +519,8 @@
                     <div class="form-text text-center mt-2">
                         <small>
                             <span class="d-block text-muted">Credenciales de acceso:</span>
-                            Dueño: <strong>xxxxxxxxxxx</strong> / <strong>xxxxxxxxxx</strong><br>
-                            Empleado: <strong>xxxxxxxxxxx</strong> / <strong>xxxxxxxxx</strong>
+                            Dueño: <strong>gimnasiocff</strong> / <strong>lorenzo</strong><br>
+                            Empleado: <strong>empleado</strong> / <strong>(sin contraseña)</strong>
                         </small>
                     </div>
                 </div>
@@ -515,8 +533,8 @@
         <nav class="navbar navbar-dark navbar-custom">
             <div class="container-fluid">
                 <span class="navbar-brand">
-                    <img src="Logo de Golds Gim.jpeg" alt="Logo Golds Gim" class="brand-logo">
-                    Golds Gim
+                    <img src="logo.png" alt="Logo" class="brand-logo">
+                    FitPro Elite
                 </span>
                 <div class="d-flex">
                     <span class="text-light me-3">
@@ -543,9 +561,9 @@
         <div class="dashboard-header">
             <h1 class="dashboard-title">
                 <i class="fas fa-chart-line me-3"></i>
-                Golds Gim
+                FitPro Elite - Sistema de Gestión de Gimnasio
             </h1>
-            <p class="dashboard-subtitle">Software de administración</p>
+            <p class="dashboard-subtitle">Software de administración profesional • Comprado en Mercado Libre</p>
         </div>
 
         <!-- Stats Cards -->
@@ -805,6 +823,29 @@
                     </form>
                 </div>
 
+                <div id="tablaPagosContainer" class="d-none">
+                    <h5 class="mb-3"><i class="fas fa-history me-2"></i>Historial de Pagos</h5>
+                    <div class="table-responsive">
+                        <table id="tablaPagos" class="table table-custom">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Miembro ID</th>
+                                    <th>Nombre</th>
+                                    <th>Fecha</th>
+                                    <th>Monto</th>
+                                    <th>Tipo</th>
+                                    <th>Estado</th>
+                                    <th>Observaciones</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- WhatsApp Reminder -->
                 <div class="form-card mb-4">
                     <h5 class="mb-3"><i class="fab fa-whatsapp me-2"></i>Recordatorio de cuota por WhatsApp</h5>
                     <div class="row g-3">
@@ -812,8 +853,8 @@
                             <label class="form-label">Miembro (ID, DNI o Nombre)</label>
                             <input id="reminder_member" class="form-control" list="membersList"
                                 placeholder="Ej: 1, 12345678 o Juan" autocomplete="off">
-                            <div class="form-text">Se abre WhatsApp para que elijas el contacto. No hace falta guardar
-                                número.</div>
+                            <div class="form-text">Se abre WhatsApp para que elijas el contacto. No hace falta
+                                guardar número.</div>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Vencimiento (opcional)</label>
@@ -835,28 +876,6 @@
                                 <i class="fab fa-whatsapp me-2"></i>Enviar por WhatsApp
                             </button>
                         </div>
-                    </div>
-                </div>
-
-                <div id="tablaPagosContainer" class="d-none">
-                    <h5 class="mb-3"><i class="fas fa-history me-2"></i>Historial de Pagos</h5>
-                    <div class="table-responsive">
-                        <table id="tablaPagos" class="table table-custom">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Miembro ID</th>
-                                    <th>Nombre</th>
-                                    <th>Fecha</th>
-                                    <th>Monto</th>
-                                    <th>Tipo</th>
-                                    <th>Estado</th>
-                                    <th>Observaciones</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
                     </div>
                 </div>
             </div>
@@ -982,7 +1001,7 @@
 
             <!-- Manual de Usuario Content -->
             <div class="tab-pane fade" id="manual" role="tabpanel">
-                <div class="section-title">Manual de Usuario - Golds Gim</div>
+                <div class="section-title">Manual de Usuario - FitPro Elite</div>
 
                 <div class="row">
                     <div class="col-lg-3 d-none d-lg-block">
@@ -1001,13 +1020,12 @@
                     <div class="col-lg-9">
                         <div class="manual-content p-4 bg-light rounded-3 shadow-sm">
                             <div class="text-center mb-5">
-                                <img src="Logo de Golds Gim.jpeg" alt="Logo Golds Gim" class="img-fluid mb-3"
-                                    style="max-height: 80px;">
-                                <h2 id="m-intro" class="fw-bold">Golds Gim</h2>
-                                <p class="text-muted">Guía completa para la administración profesional.
+                                <img src="logo.png" alt="Logo" class="img-fluid mb-3" style="max-height: 80px;">
+                                <h2 id="m-intro" class="fw-bold">FitPro Elite: Sistema de Gestión</h2>
+                                <p class="text-muted">Guía completa para la administración profesional de tu gimnasio.
                                 </p>
                                 <div class="d-flex justify-content-center gap-2">
-                                    <a href="Manual de Usuario - Golds Gim.pdf" target="_blank"
+                                    <a href="Manual de Usuario - FitPro Elite.pdf" target="_blank"
                                         class="btn btn-danger btn-sm">
                                         <i class="fas fa-file-pdf me-2"></i>Descargar PDF
                                     </a>
@@ -1043,8 +1061,7 @@
                                     <div class="col-md-6">
                                         <div class="p-3 border rounded">
                                             <h6 class="fw-bold"><i class="fas fa-users me-2 text-primary"></i>Miembros
-                                                Activos
-                                            </h6>
+                                                Activos</h6>
                                             <p class="small text-muted mb-0">Total de socios registrados actualmente.
                                             </p>
                                         </div>
@@ -1052,8 +1069,8 @@
                                     <div class="col-md-6">
                                         <div class="p-3 border rounded">
                                             <h6 class="fw-bold"><i
-                                                    class="fas fa-dollar-sign me-2 text-success"></i>Ingresos del
-                                                Mes</h6>
+                                                    class="fas fa-dollar-sign me-2 text-success"></i>Ingresos del Mes
+                                            </h6>
                                             <p class="small text-muted mb-0">Dinero total recaudado en el mes vigente.
                                             </p>
                                         </div>
@@ -1112,8 +1129,7 @@
 
                             <div id="m-backup" class="manual-section mb-5">
                                 <h4><span class="section-icon"><i class="fas fa-database"></i></span> 7. Copias de
-                                    Seguridad
-                                </h4>
+                                    Seguridad</h4>
                                 <div class="alert alert-danger border-0 shadow-sm">
                                     <h6 class="fw-bold"><i class="fas fa-exclamation-triangle me-2"></i>ACCIÓN
                                         OBLIGATORIA</h6>
@@ -1123,8 +1139,11 @@
                                 </div>
                             </div>
 
-                            <div class="text-center mt-5">
-                                <p class="text-muted small">Golds Gim</p>
+                            <div class="text-center mt-5 pt-4 border-top">
+                                <p class="text-muted">¿Necesitás más ayuda?</p>
+                                <button class="btn btn-primary-custom btn-custom" onclick="openSupportModal()">
+                                    <i class="fas fa-headset me-2"></i>Contactar Soporte
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -1503,15 +1522,15 @@
                 const pass = $('#login_pass').val().trim();
 
                 // 1. LOGIN DE DUEÑO (ADMIN)
-                if (user === 'Goldsgim369' && pass === 'Carmen1948') {
+                if (user === 'gimnasiocff' && pass === 'lorenzo') {
                     localStorage.setItem('gym_loggedIn', 'true');
                     localStorage.setItem('gym_role', 'owner');
                     hideLogin();
-                    showAlert('Bienvenido/a. Acceso Total.', 'success');
+                    showAlert('Bienvenido, Dueño. Acceso Total.', 'success');
                     updateStats();
                 }
-                // 2. LOGIN DE EMPLEADO
-                else if (user === 'Goldsgim207' && pass === 'Amado1946') {
+                // 2. LOGIN DE EMPLEADO (Puede ser 'empleado' o simplemente vacío/cualquier cosa si no es el dueño)
+                else if (user === 'empleado' || (user === '' && pass === '')) {
                     localStorage.setItem('gym_loggedIn', 'true');
                     localStorage.setItem('gym_role', 'employee');
                     hideLogin();
@@ -1519,7 +1538,7 @@
                     updateStats();
                 }
                 else {
-                    showAlert('Credenciales incorrectas.', 'danger');
+                    showAlert('Credenciales incorrectas. Para empleado puede dejar los campos vacíos.', 'danger');
                 }
             });
 
@@ -1533,6 +1552,93 @@
                 }
             });
             // ---- END LOGIN ----
+
+            // Cargar datos de ejemplo si es la primera vez
+            if (storage.getUsuarios().length === 0) {
+                // Limpiar localStorage y agregar datos de ejemplo
+                localStorage.setItem('gym_usuarios', JSON.stringify([]));
+                localStorage.setItem('gym_pagos', JSON.stringify([]));
+                localStorage.setItem('gym_clases', JSON.stringify([]));
+                localStorage.setItem('gym_inscripciones', JSON.stringify([]));
+                localStorage.setItem('gym_next_id', '1');
+                storage.addUsuario({
+                    nombre: 'Juan',
+                    apellido: 'P\u00e9rez',
+                    telefono: '123-456-7890',
+                    email: 'juan@email.com',
+                    fecha_vencimiento: '2024-12-31',
+                    dni: '12345678',
+                    direccion: 'Av. Ejemplo 123',
+                    fecha_nacimiento: '1990-05-15',
+                    grupo_sanguineo: 'O+'
+                });
+
+                storage.addClase({
+                    nombre: 'Yoga',
+                    descripcion: 'Clase de yoga para principiantes',
+                    horario: 'Lunes y Miércoles 18:00'
+                });
+
+                storage.addClase({
+                    nombre: 'CrossFit',
+                    descripcion: 'Entrenamiento funcional de alta intensidad',
+                    horario: 'Martes y Jueves 19:00'
+                });
+            }
+
+            // Cargar clases en selector
+            populateClaseOptions();
+            // Actualizar estadísticas al cargar
+            updateStats();
+
+            // DataTables para usuarios
+            const tablaUsuarios = $("#tablaUsuarios").DataTable({
+                destroy: true,
+                columnDefs: [
+                    { orderable: false, targets: 10 } // Columna de acciones no ordenable
+                ],
+                language: {
+                    search: "Buscar:",
+                    lengthMenu: "Mostrar _MENU_ registros",
+                    info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+                    paginate: {
+                        first: "Primero",
+                        last: "Último",
+                        next: "Siguiente",
+                        previous: "Anterior"
+                    },
+                    emptyTable: "No hay datos disponibles",
+                    zeroRecords: "No se encontraron registros"
+                }
+            });
+
+            // DataList Member update
+            function updateMembersDatalist() {
+                const members = storage.getUsuarios();
+                const datalist = document.getElementById('membersList');
+                if (!datalist) {
+                    const dl = document.createElement('datalist');
+                    dl.id = 'membersList';
+                    document.body.appendChild(dl);
+                }
+                document.getElementById('membersList').innerHTML = members.map(u =>
+                    `<option value="${u.id}">${u.nombre} ${u.apellido} (DNI: ${u.dni})</option>`
+                ).join('');
+            }
+            updateMembersDatalist();
+
+            // Refresh datalist when users change
+            const originalAddUsuario = storage.addUsuario;
+            storage.addUsuario = function (u) {
+                const res = originalAddUsuario.call(this, u);
+                updateMembersDatalist();
+                return res;
+            };
+            const originalDeleteUsuario = storage.deleteUsuario;
+            storage.deleteUsuario = function (id) {
+                originalDeleteUsuario.call(this, id);
+                updateMembersDatalist();
+            };
 
             // ---- RECORDATORIO WHATSAPP (sin número) ----
             function findUsuarioByQuery(q) {
@@ -1590,60 +1696,6 @@
                 window.open(url, '_blank');
             });
             // ---- END RECORDATORIO WHATSAPP ----
-
-            // Cargar clases en selector
-            populateClaseOptions();
-            // Actualizar estadísticas al cargar
-            updateStats();
-
-            // DataTables para usuarios
-            const tablaUsuarios = $("#tablaUsuarios").DataTable({
-                destroy: true,
-                columnDefs: [
-                    { orderable: false, targets: 10 } // Columna de acciones no ordenable
-                ],
-                language: {
-                    search: "Buscar:",
-                    lengthMenu: "Mostrar _MENU_ registros",
-                    info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
-                    paginate: {
-                        first: "Primero",
-                        last: "Último",
-                        next: "Siguiente",
-                        previous: "Anterior"
-                    },
-                    emptyTable: "No hay datos disponibles",
-                    zeroRecords: "No se encontraron registros"
-                }
-            });
-
-            // DataList Member update
-            function updateMembersDatalist() {
-                const members = storage.getUsuarios();
-                const datalist = document.getElementById('membersList');
-                if (!datalist) {
-                    const dl = document.createElement('datalist');
-                    dl.id = 'membersList';
-                    document.body.appendChild(dl);
-                }
-                document.getElementById('membersList').innerHTML = members.map(u =>
-                    `<option value="${u.id}">${u.nombre} ${u.apellido} (DNI: ${u.dni})</option>`
-                ).join('');
-            }
-            updateMembersDatalist();
-
-            // Refresh datalist when users change
-            const originalAddUsuario = storage.addUsuario;
-            storage.addUsuario = function (u) {
-                const res = originalAddUsuario.call(this, u);
-                updateMembersDatalist();
-                return res;
-            };
-            const originalDeleteUsuario = storage.deleteUsuario;
-            storage.deleteUsuario = function (id) {
-                originalDeleteUsuario.call(this, id);
-                updateMembersDatalist();
-            };
 
             // DataTables para pagos
             const tablaPagos = $("#tablaPagos").DataTable({
@@ -2824,7 +2876,7 @@
                     </div>
 
                     <p class="mt-4 text-muted small">
-                        Golds Gim
+                        FitPro Elite v4.5 • Comprado en Mercado Libre
                     </p>
                 </div>
             </div>
