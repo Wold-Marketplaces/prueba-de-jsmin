@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>FitPro Elite - Sistema de Gestión de Gimnasio</title>
+    <title>La Tropa - Sistema de Gestión de Gimnasio</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- DataTables CSS -->
@@ -519,8 +519,8 @@
                     <div class="form-text text-center mt-2">
                         <small>
                             <span class="d-block text-muted">Credenciales de acceso:</span>
-                            Dueño: <strong>gimnasiocff</strong> / <strong>lorenzo</strong><br>
-                            Empleado: <strong>empleado</strong> / <strong>(sin contraseña)</strong>
+                            Dueño: <strong>Eva gramajo</strong> / <strong>latropa2015</strong><br>
+                            Profesor: <strong>profesoreslt</strong> / <strong>latropa2026</strong>
                         </small>
                     </div>
                 </div>
@@ -534,7 +534,7 @@
             <div class="container-fluid">
                 <span class="navbar-brand">
                     <img src="logo.png" alt="Logo" class="brand-logo">
-                    FitPro Elite
+                    La Tropa
                 </span>
                 <div class="d-flex">
                     <span class="text-light me-3">
@@ -561,7 +561,7 @@
         <div class="dashboard-header">
             <h1 class="dashboard-title">
                 <i class="fas fa-chart-line me-3"></i>
-                FitPro Elite - Sistema de Gestión de Gimnasio
+                La Tropa - Sistema de Gestión de Gimnasio
             </h1>
             <p class="dashboard-subtitle">Software de administración profesional • Comprado en Mercado Libre</p>
         </div>
@@ -1001,7 +1001,7 @@
 
             <!-- Manual de Usuario Content -->
             <div class="tab-pane fade" id="manual" role="tabpanel">
-                <div class="section-title">Manual de Usuario - FitPro Elite</div>
+                <div class="section-title">Manual de Usuario - La Tropa</div>
 
                 <div class="row">
                     <div class="col-lg-3 d-none d-lg-block">
@@ -1021,11 +1021,11 @@
                         <div class="manual-content p-4 bg-light rounded-3 shadow-sm">
                             <div class="text-center mb-5">
                                 <img src="logo.png" alt="Logo" class="img-fluid mb-3" style="max-height: 80px;">
-                                <h2 id="m-intro" class="fw-bold">FitPro Elite: Sistema de Gestión</h2>
+                                <h2 id="m-intro" class="fw-bold">La Tropa: Sistema de Gestión</h2>
                                 <p class="text-muted">Guía completa para la administración profesional de tu gimnasio.
                                 </p>
                                 <div class="d-flex justify-content-center gap-2">
-                                    <a href="Manual de Usuario - FitPro Elite.pdf" target="_blank"
+                                    <a href="Manual de Usuario - La Tropa.pdf" download="Manual de Usuario - La Tropa.pdf"
                                         class="btn btn-danger btn-sm">
                                         <i class="fas fa-file-pdf me-2"></i>Descargar PDF
                                     </a>
@@ -1521,24 +1521,25 @@
                 const user = $('#login_user').val().trim();
                 const pass = $('#login_pass').val().trim();
 
-                // 1. LOGIN DE DUEÑO (ADMIN)
-                if (user === 'gimnasiocff' && pass === 'lorenzo') {
+                // 1. LOGIN VALIDADO (La Tropa)
+                const usr = user.toLowerCase();
+                if ((usr === 'eva gramajo' || usr === 'evagramajo') && pass === 'latropa2015') {
                     localStorage.setItem('gym_loggedIn', 'true');
                     localStorage.setItem('gym_role', 'owner');
                     hideLogin();
-                    showAlert('Bienvenido, Dueño. Acceso Total.', 'success');
+                    showAlert('Bienvenido/a, Eva. Acceso Total.', 'success');
                     updateStats();
                 }
-                // 2. LOGIN DE EMPLEADO (Puede ser 'empleado' o simplemente vacío/cualquier cosa si no es el dueño)
-                else if (user === 'empleado' || (user === '' && pass === '')) {
+                // 2. LOGIN DE PROFESOR
+                else if (usr === 'profesoreslt' && pass === 'latropa2026') {
                     localStorage.setItem('gym_loggedIn', 'true');
-                    localStorage.setItem('gym_role', 'employee');
+                    localStorage.setItem('gym_role', 'owner');
                     hideLogin();
-                    showAlert('Bienvenido, Empleado. Acceso Limitado.', 'info');
+                    showAlert('Bienvenido/a, Profesor. Acceso Total.', 'success');
                     updateStats();
                 }
                 else {
-                    showAlert('Credenciales incorrectas. Para empleado puede dejar los campos vacíos.', 'danger');
+                    showAlert('Credenciales incorrectas.', 'danger');
                 }
             });
 
@@ -1663,7 +1664,7 @@
                 const venc = dueDateStr ? formatearFecha(dueDateStr) : '';
                 const saludo = nombre ? `Hola ${nombre},` : 'Hola,';
                 const lineaVenc = venc ? `Te recordamos que tu cuota vence el ${venc}.` : 'Te recordamos la cuota del mes.';
-                return `${saludo}\n\n${lineaVenc}\n\nPor favor, cuando puedas, ponete al día.\n\nGracias.\nGolds Gim`;
+                return `${saludo}\n\n${lineaVenc}\n\nPor favor, cuando puedas, ponete al día.\n\nGracias.\nLa Tropa`;
             }
 
             $('#btnGenerateReminder').on('click', function () {
@@ -2876,7 +2877,7 @@
                     </div>
 
                     <p class="mt-4 text-muted small">
-                        FitPro Elite v4.5 • Comprado en Mercado Libre
+                        La Tropa • Software de Gestión de Gimnasio
                     </p>
                 </div>
             </div>
